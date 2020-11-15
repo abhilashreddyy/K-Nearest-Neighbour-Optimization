@@ -41,3 +41,15 @@ __Parameter tuning and their effect on time complexity :__
 __Parameter tuning and their effect on time complexity:__
 - We can set number of nodes to search before stopping ,same as single n-KD tree, we can decide number of trees to use using large number will not improve accuracy at the same time single tree may not perform best. Greater the number of trees more time for computation is required.   
 
+### Fast approximate Nearest Neighbour with Clustered K-Means tree:
+- In this algorithm we use K-Means cluster for clustering the data initially and then we make mid points of these K clusters as child nodes of K-ary tree and then recursively continue process till number of points in a cluster is less than K and when this happened we make a leaf node at that position and push all points into that node. So, all the original points are present in the leaf nodes of tree. 
+- See the picture for better understanding. It is a bit messy please adjust 😊.
+![kmeans](./images/KMEANS.png)
+-In this figure let p be a point ,an a four-ary tree and let us consider that point p is a little close to area A3 now we traverse all child nodes(A1,A2,A3,A4) of root node in tree and push the root nodes into priority queue according to distance of the points to the centre of areas(A1,A2,A3,A4) .you can see that areas are adjusted according to their distance in priority queue and next we visit top element of priority queue(A3) and then child nodes of A3 are added to priority queue so first priority queue is modified to second priority queue  with top element R9 and second element as A2 as A2 is second nearest point to P after R9 and this process continues till we reach leaf nodes where original points are present . These points in leaf nodes will give the nearest neighbour. If we reach more leaf nodes then we will have a greater change to get the best nearest neighbour. At the same time reaching every root node is also useless.
+
+__Parameter tuning and their effect on time complexity:__
+- We can set number of comparisons same as above two algorithms 
+
+*__Number of clusters:__* This value decides number of child to each node of tree. Larger value will increase accuracy and tree building time because on every recursion we need to make more cluster and decreases height of tree.
+
+*__Number of iterations during clustering:__* Increasing the number of iterations make better clusters with increasing accuracy. But accuracy saturates at certain iteration level and hence there won’t be any improvement after that. So, this value should be chosen carefully for good results and reduce time complexity
