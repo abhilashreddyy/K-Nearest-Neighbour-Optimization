@@ -36,7 +36,8 @@ __Parameter tuning and their effect on time complexity :__
 
 - Let us consider that above two figures are two trees formed when altered the order of data during construction of tree. In first figure point q and its nearest neighbour are separated by blue line and in figure 2 the is no separation between it means tree from second figure predicts correct nearest neighbour. 
 - Now let me prove why multiple trees give better results. Let us consider two points and if I draw line in space then the probability of that line passing between two points(given point and its nearest neighbour) is much less then not passing between them. In the same way if there are n randomized K-D trees with different configuration then according to probability only few of those trees separate the query point and its nearest neighbour so when we consider result of multiple K-D trees then most probably we get nearest neighbour. 
-- Now there is one more luxury with this algorithm we can process this in parallel and I mean we can use a common priority queue for all the different trees and run searching for nearest neighbour in all the trees in parallel. This is extremely while data is too large to handle in a single computer or system .
+- Now there is one more luxury with this algorithm we can process this in parallel and I mean we can use a common priority queue for all the different trees and run searching for nearest neighbour in all the trees in parallel. This is extremely while data is too large to handle in a single computer or system.\
+
 __Parameter tuning and their effect on time complexity:__
 - We can set number of nodes to search before stopping ,same as single n-KD tree, we can decide number of trees to use using large number will not improve accuracy at the same time single tree may not perform best. Greater the number of trees more time for computation is required.   
 
